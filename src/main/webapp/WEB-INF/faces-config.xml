@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://Java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+	<managed-bean>
+		<managed-bean-name>question</managed-bean-name>
+		<managed-bean-class>modelo.bean.QuestionBean3</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<navigation-rule>
+		<display-name>Main3.xhtml</display-name>
+		<from-view-id>/Main3.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>create</from-outcome>
+			<to-view-id>/CreateQuestion3.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>Main3.xhtml</display-name>
+		<from-view-id>/Main3.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>query</from-outcome>
+			<to-view-id>/QueryQuestion3.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+</faces-config>
