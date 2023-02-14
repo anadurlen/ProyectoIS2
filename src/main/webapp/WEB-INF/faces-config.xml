@@ -26,5 +26,37 @@
 			<to-view-id>/QueryQuestion3.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>Main3.xhtml</display-name>
+		<from-view-id>/Main3.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>allEvents</from-outcome>
+			<to-view-id>/AllEvents3.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>AllEvents3.xhtml</display-name>
+		<from-view-id>/AllEvents3.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>back</from-outcome>
+			<to-view-id>/Main3.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>QueryQuestion3.xhtml</display-name>
+		<from-view-id>/QueryQuestion3.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>back</from-outcome>
+			<to-view-id>/Main3.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>CreateQuestion3.xhtml</display-name>
+		<from-view-id>/CreateQuestion3.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>back</from-outcome>
+			<to-view-id>/Main3.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>

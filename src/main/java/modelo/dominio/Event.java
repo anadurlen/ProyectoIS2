@@ -13,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import modelo.dominio.Question;
-
+import modelo.HibernateUtil;
 
 
 @Entity

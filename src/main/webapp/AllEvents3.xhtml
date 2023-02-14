@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets" 
+xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui">
+<f:view>
+<h:head><title>Create Question</title>
+<h:outputStylesheet library="css" name="style.css" />
+<h:outputScript library="js" name="infoJavaScript.js"/>
+
+</h:head>
+
+<h:body>
+<h:form id="miForm">
+
+
+
+
+
+<tr>
+<td id="eventos">Events: </td>
+
+<td>
+<h:selectOneMenu id="lista" value="#{question.event}" converter="omnifaces.SelectItemsConverter">
+<f:selectItems value="#{question.events}"></f:selectItems>
+<f:ajax event="change" listener="#{question.allEvents}" render="mensajes"></f:ajax>
+</h:selectOneMenu>
+ </td>
+</tr>
+<tr>
+				<td><p:dataTable id="tablaEventos" value="#{question.events}"
+						var="item" selectionMode="single" selection="#{question.event}"
+						border="1" rowKey="#{item.eventNumber}">
+						<p:ajax event="rowSelect" listener="#{question.allEvents}" update=":miForm:tablaEventos"></p:ajax>
+						<f:facet name="header">Events</f:facet>
+						<p:column headerText="Event ID">#{item.eventNumber}</p:column>
+						<p:column headerText="Event Description">#{item.description}</p:column>
+					</p:dataTable></td>
+</tr>
+<tr>
+<h:messages id="mensajes" style="color:blue"/>
+
+</tr>
+<h:commandButton value="Show Event" action="mensajes"/>
+<h:commandButton value="Back" action="back"/>
+
+</h:form>
+</h:body>
+</f:view>
+</html>

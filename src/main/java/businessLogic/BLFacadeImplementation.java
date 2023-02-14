@@ -1,5 +1,5 @@
 package businessLogic;
-//hola
+
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -14,6 +14,7 @@ import dataAccess.HibernateDataAccess;
 import dataAccess.IHibernateDataAccess;
 import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
+
 import modelo.dominio.Event;
 import modelo.dominio.Question;
 
@@ -22,19 +23,17 @@ import modelo.dominio.Question;
  */
 
 public class BLFacadeImplementation  implements BLFacade {
-	private BLFacadeImplementation facade;
+	private static BLFacadeImplementation facade;
 	private IHibernateDataAccess dbManager;
+	
+	
+	
+	public BLFacadeImplementation() {
+		this.dbManager = new HibernateDataAccess();
+		
+	}
 
-	public BLFacadeImplementation getInstance()  {		
-		System.out.println("Creating BLFacadeImplementation instance");
-		if (facade==null) {
-			facade=new BLFacadeImplementation();
-			facade.setDate((IHibernateDataAccess) new HibernateDataAccess());
-			return facade;
-		}
-		
-		return facade;
-		
+	
 		/*if (c.getDataBaseOpenMode().equals("initialize")) {
 			
 		    dbManager=new DataAccessInterface(new ObjectDbDAOManager());
@@ -42,7 +41,7 @@ public class BLFacadeImplementation  implements BLFacade {
 			dbManager.close();
 			}
 		*/
-	}
+	
 	
 	/*
 	 * public BLFacadeImplementation(DataAccessInterface da) {
@@ -126,6 +125,13 @@ public class BLFacadeImplementation  implements BLFacade {
 		return dates;
 	}
 	 
+	 
+	 public List<Event> allEvents(){
+		 
+		 List<Event> eventos =this.dbManager.allEvents();
+		 return eventos;
+	 }
+	 
 	
 	
 	
@@ -141,9 +147,24 @@ public class BLFacadeImplementation  implements BLFacade {
     
 	 public void initializeBD(){
     	
-		dbManager.initializeDB();
+		this.dbManager.initializeDB();
 		
 	}
 
+
+	 public static BLFacadeImplementation getInstance()  {		
+			System.out.println("Creating BLFacadeImplementation instance");
+			if (facade==null) {
+				facade=new BLFacadeImplementation();
+				
+				
+			}
+			
+			return facade;
+	 
+	
+
+
+}
 }
 

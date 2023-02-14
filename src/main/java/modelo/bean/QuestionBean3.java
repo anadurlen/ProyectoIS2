@@ -28,7 +28,8 @@ import modelo.dominio.Question;
 	public class QuestionBean3 {
 		
 		
-		BLFacade bl = new BLFacadeImplementation();
+		BLFacade bl;
+		
 		private Date date;
 		private String question;
 		private Integer bet;
@@ -37,7 +38,11 @@ import modelo.dominio.Question;
 		
 		private List<Question> questions;
 		
+		private List<Event> allEvents;
 		
+		public QuestionBean3() {
+			 bl = BLFacadeImplementation.getInstance();
+		}
 
 		public Date getDate() {
 			return date;
@@ -115,7 +120,7 @@ import modelo.dominio.Question;
 		
 		public List<Event> getEvents() {
 			
-			List<Event> events = bl.getEvents(date);
+			
 			
 			
 			
@@ -131,8 +136,8 @@ import modelo.dominio.Question;
 		public void eventsBD(SelectEvent event) {
 			
 			Date date = (Date) event.getObject();
-			this.events= (List<Event>) bl.getEvents(date);//eventos base de datos que coincidan en esa fecha
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(events.toString()));
+			this.events= bl.getEvents(date);//eventos base de datos que coincidan en esa fecha
+			
 				}
 			
 		
@@ -154,7 +159,7 @@ import modelo.dominio.Question;
 
 		public void setEvent(Event event) {
 			this.event = event;
-			System.out.println("Evento escogido:" + event.getEventNumber() + event.getDescription());
+			
 		}
 
 		public List<Question> getQuestions() {
@@ -164,6 +169,25 @@ import modelo.dominio.Question;
 		public void setQuestions(List<Question> questions) {
 			this.questions = questions;
 		}
+		
+		
+		public List<Event> allEvents(List<Event> events) {
+			
+			List<Event> todosEventos= (List<Event>) bl.allEvents();
+			System.out.println("hola estoy funcionando");
+			return todosEventos;
+			
+		}
+
+		public List<Event> getAllEvents() {
+			return allEvents;
+		}
+
+		public void setAllEvents(List<Event> allEvents) {
+			this.allEvents = allEvents;
+		}
+		
+		
 
 		
 		

@@ -60,5 +60,7 @@ public List<Date> getEventsMonth(Date date);
 	 */	
 public void initializeBD();
 
+public List<Event> allEvents();
+
 	
 }
